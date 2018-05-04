@@ -1,0 +1,8 @@
+language: csharp
+mono:
+  - latest
+
+  - 3.10.0
+  solution: dotNetRDF.snl
+  script:
+    - xbuild /p:Configuration=Release dotNetRDF.sln
