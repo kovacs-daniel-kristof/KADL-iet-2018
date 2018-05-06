@@ -158,10 +158,6 @@ namespace VDS.RDF.Writing
                         globalContext.Output.WriteLine(graphContent);
                         globalContext.Output.Flush();
                     }
-                    catch
-                    {
-                        throw;
-                    }
                     finally
                     {
                         Monitor.Exit(globalContext.Output);
