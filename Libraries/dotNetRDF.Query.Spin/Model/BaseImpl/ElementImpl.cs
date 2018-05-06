@@ -34,7 +34,7 @@ namespace VDS.RDF.Query.Spin.Model
         {
         }
 
-        //public abstract void visit(IElementVisitor visitor);
+ 
         
     }
 }

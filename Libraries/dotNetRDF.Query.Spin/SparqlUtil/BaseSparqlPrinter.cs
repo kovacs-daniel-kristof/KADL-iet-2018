@@ -250,7 +250,7 @@ namespace VDS.RDF.Query.Spin.SparqlUtil
             }
             else
             {
-                String lit = binding.ToString();//FmtUtils.stringForNode(binding, noPrefixMapping);
+                String lit = binding.ToString();
                 print(lit);
             }
         }

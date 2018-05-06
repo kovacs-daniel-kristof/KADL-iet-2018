@@ -176,26 +176,7 @@ namespace VDS.RDF.Query.Spin.Core
         }
 
 
-        /* *
-         * Initializes this registry with all system functions and templates
-         * from the SPL namespace.
-         */
-        //public void init()
-        //{
-        //    IGraph splModel = SPL.GetModel();
-        //    IGraph spinModel = SPIN.GetModel();
-        //    //TODO find as way to register common modules into 
-        //    MultiUnion multiUnion = JenaUtil.createMultiUnion(new Graph[] {
-        //    splModel.getGraph(),
-        //    spinModel.getGraph()
-        //});
-        //    multiUnion.setBaseGraph(splModel.getGraph());
-        //    Model unionModel = ModelFactory.createModelForGraph(multiUnion);
-        //    registerAll(unionModel, null);
-
-        //    FunctionRegistry.get().put(SPIN.eval.Uri, new EvalFunction());
-        //    PropertyFunctionRegistry.get().put("http://topbraid.org/spin/owlrl#propertyChainHelper", PropertyChainHelperPFunction);
-        //}
+      
 
         /**
          * Registers a Function with its URI to this registry.

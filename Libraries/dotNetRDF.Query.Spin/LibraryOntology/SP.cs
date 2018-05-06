@@ -346,97 +346,11 @@ namespace VDS.RDF.Query.Spin.LibraryOntology
             if (varName.StartsWith("arg"))
             {
                 var subString = varName.Substring(3);
-                try
-                {
                     return int.Parse(subString);
                 }
-                catch (Exception)
-                {
-                }
-            }
             return null;
         }
 
-/*
-    static SP() {
-		SP.init(BuiltinPersonalities.model);
-    }
 
-    
-    //@SuppressWarnings("deprecation")
-	private static void init(Personality<INode> p) {
-    	p.Add(Aggregation, new SimpleImplementation(SPL.Argument, AggregationImpl));
-    	p.Add(Argument, new SimpleImplementation(SPL.Argument, ArgumentImpl));
-    	p.Add(Attribute, new SimpleImplementation(SPL.Attribute, AttributeImpl));
-    	p.Add(Ask, new SimpleImplementation(Ask, AskImpl));
-    	p.Add(Bind, new SimpleImplementation2(Bind, Let, BindImpl));
-    	p.Add(Clear, new SimpleImplementation(Clear, ClearImpl));
-    	p.Add(Construct, new SimpleImplementation(Construct, ConstructImpl));
-    	p.Add(Create, new SimpleImplementation(Create, CreateImpl));
-    	p.Add(VDS.RDF.Query.Spin.Model.Delete, new SimpleImplementation(Delete, VDS.RDF.Query.Spin.Model.DeleteImpl));
-    	p.Add(DeleteData, new SimpleImplementation(DeleteData, DeleteDataImpl));
-    	p.Add(DeleteWhere, new SimpleImplementation(DeleteWhere, DeleteWhereImpl));
-    	p.Add(Describe, new SimpleImplementation(Describe, DescribeImpl));
-    	p.Add(Drop, new SimpleImplementation(Drop, DropImpl));
-    	p.Add(ElementList, new SimpleImplementation(RDF.List, ElementListImpl));
-    	p.Add(Exists, new SimpleImplementation(Exists, ExistsImpl));
-    	p.Add(Function, new SimpleImplementation(SPIN.Function, FunctionImpl));
-    	p.Add(FunctionCall, new SimpleImplementation(SPIN.Function, FunctionCallImpl));
-    	p.Add(Filter, new SimpleImplementation(Filter, FilterImpl));
-    	p.Add(VDS.RDF.Query.Spin.Model.Insert, new SimpleImplementation(Insert, VDS.RDF.Query.Spin.Model.InsertImpl));
-    	p.Add(InsertData, new SimpleImplementation(InsertData, InsertDataImpl));
-    	p.Add(Load, new SimpleImplementation(Load, LoadImpl));
-    	p.Add(Minus, new SimpleImplementation(Minus, MinusImpl));
-    	p.Add(Modify, new SimpleImplementation(Modify, ModifyImpl));
-    	p.Add(Module, new SimpleImplementation(SPIN.Module, ModuleImpl));
-    	p.Add(NamedGraph, new SimpleImplementation(NamedGraph, NamedGraphImpl));
-    	p.Add(NotExists, new SimpleImplementation(NotExists, NotExistsImpl));
-    	p.Add(Optional, new SimpleImplementation(Optional, OptionalImpl));
-    	p.Add(Service, new SimpleImplementation(Service, ServiceImpl));
-    	p.Add(Select, new SimpleImplementation(Select, SelectImpl));
-    	p.Add(SubQuery, new SimpleImplementation(SubQuery, SubQueryImpl));
-    	p.Add(SPINInstance, new SimpleImplementation(RDFS.Resource, SPINInstanceImpl));
-    	p.Add(Template, new SimpleImplementation(SPIN.Template, TemplateImpl));
-    	p.Add(TemplateCall, new SimpleImplementation(RDFS.Resource, TemplateCallImpl));
-    	p.Add(TriplePath, new SimpleImplementation(TriplePath, TriplePathImpl));
-    	p.Add(TriplePattern, new SimpleImplementation(TriplePattern, TriplePatternImpl));
-    	p.Add(TripleTemplate, new SimpleImplementation(TripleTemplate, TripleTemplateImpl));
-    	p.Add(Union, new SimpleImplementation(Union, UnionImpl));
-    	p.Add(Values, new SimpleImplementation(Values, ValuesImpl));
-    	p.Add(Variable, new SimpleImplementation(Variable, VariableImpl));
-    }
-    
-    
-
-    
-    public static INode getArgProperty(int index) {
-    	return RDFUtil.CreateUriNode(UriFactory.Create(NS_URI + "arg" + index);
-    }
-    
-    
-    public static INode getArgProperty(String varName) {
-    	return RDFUtil.CreateUriNode(UriFactory.Create(NS_URI + varName);
-    }
-    
-    
-	
-	
-	public static String getURI() {
-        return NS_URI;
-    }
-
-
-	public static void toStringElementList(StringBuilder buffer, INode resource) {
-		RDFList list = resource.As(RDFList);
-		for(IEnumerator<INode> it = list.GetEnumerator(); it.MoveNext(); ) {
-			INode item = (INode) it.Current;
-			Element e = SPINFactory.asElement(item);
-			buffer.append(e.ToString());
-			if(it.MoveNext()) {
-				buffer.append(" .\n"));
-			}
-		}
-	}
-*/
     }
 }

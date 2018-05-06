@@ -160,7 +160,7 @@ namespace VDS.RDF.Query.Spin.Model
         protected void printNestedExpressionString(ISparqlPrinter p, IResource node, bool force)
         {
             // TODO handle namespace prefixes
-            //SPINExpressions.printExpressionString(p, node, true, force, new NamespaceMapper());
+     
         }
 
 

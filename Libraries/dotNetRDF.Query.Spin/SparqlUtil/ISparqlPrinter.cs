@@ -91,8 +91,7 @@ namespace VDS.RDF.Query.Spin.SparqlUtil
          * Gets the Jena NodeToLabelMap associated with this.
          * @return the NodeToLabelMap
          */
-        //NodeToLabelMap getNodeToLabelMap();
-
+    
 
         /* *
          * Checks whether prefix declarations shall be printed into the

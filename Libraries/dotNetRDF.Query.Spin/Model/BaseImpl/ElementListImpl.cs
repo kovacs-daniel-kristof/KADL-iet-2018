@@ -260,9 +260,6 @@ namespace VDS.RDF.Query.Spin.Model
             return sb.ToString();
         }
 
-        //override public void visit(IElementVisitor visitor)
-        //{
-        //    visitor.visit(this);
-        //}
+
     }
 }

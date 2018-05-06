@@ -37,10 +37,6 @@ namespace VDS.RDF.Query.Spin.Model
     internal interface IElement : IPrintable, IResource
     {
 
-        /*
-         * Visits this with a given visitor.
-         * @param visitor  the visitor to visit this with
-         */
-        //void visit(IElementVisitor visitor);
+ 
     }
 }

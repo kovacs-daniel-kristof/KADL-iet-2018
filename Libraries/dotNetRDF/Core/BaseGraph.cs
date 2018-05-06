@@ -252,16 +252,10 @@ namespace VDS.RDF
         /// <returns></returns>
         public virtual IBlankNode CreateBlankNode(String nodeId)
         {
-            // try
-            // {
-            //    Monitor.Enter(this._bnodemapper);
+       
                 _bnodemapper.CheckID(ref nodeId);
                 return new BlankNode(this, nodeId);
-            // }
-            // finally
-            // {
-            //    Monitor.Exit(this._bnodemapper);
-            // }
+
         }
 
         /// <summary>
@@ -761,15 +755,9 @@ namespace VDS.RDF
         /// <returns></returns>
         public virtual String GetNextBlankNodeID()
         {
-            // try
-            // {
-            //    Monitor.Enter(this._bnodemapper);
+ 
                 return _bnodemapper.GetNextID();
-            // }
-            // finally
-            // {
-            //    Monitor.Exit(this._bnodemapper);
-            // }
+
         }
 
         #endregion
