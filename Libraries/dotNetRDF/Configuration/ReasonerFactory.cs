@@ -130,9 +130,9 @@ namespace VDS.RDF.Configuration
             if (t.GetInterfaces().Any(i => i.Equals(ireasoner)))
             {
                 ConstructorInfo c = t.GetConstructor(new Type[0]);
-                if (c != null)
+                if (c != null && c.IsPublic)
                 {
-                    if (c.IsPublic) return true;
+                   return true;
                 }
             }
 

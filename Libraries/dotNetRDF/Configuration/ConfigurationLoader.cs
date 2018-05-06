@@ -1007,12 +1007,9 @@ namespace VDS.RDF.Configuration
                     if (n == null) continue;
                 }
 
-                if (n.NodeType == NodeType.Literal)
+                if (n.NodeType == NodeType.Literal && (bool.TryParse(((ILiteralNode)n).Value, out var temp)))
                 {
-                    if (bool.TryParse(((ILiteralNode)n).Value, out var temp))
-                    {
-                        return temp;
-                    }
+                    return temp;
                 }
             }
             return defValue;
@@ -1075,12 +1072,9 @@ namespace VDS.RDF.Configuration
                     if (n == null) continue;
                 }
 
-                if (n.NodeType == NodeType.Literal)
+                if (n.NodeType == NodeType.Literal && (long.TryParse(((ILiteralNode)n).Value, out var temp)))
                 {
-                    if (long.TryParse(((ILiteralNode)n).Value, out var temp))
-                    {
                         return temp;
-                    }
                 }
             }
             return defValue;
@@ -1143,12 +1137,9 @@ namespace VDS.RDF.Configuration
                     if (n == null) continue;
                 }
 
-                if (n.NodeType == NodeType.Literal)
+                if (n.NodeType == NodeType.Literal && (int.TryParse(((ILiteralNode)n).Value, out var temp)))
                 {
-                    if (int.TryParse(((ILiteralNode)n).Value, out var temp))
-                    {
                         return temp;
-                    }
                 }
             }
             return defValue;

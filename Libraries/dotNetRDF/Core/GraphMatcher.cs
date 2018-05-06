@@ -497,9 +497,9 @@ namespace VDS.RDF
                 {
                     if (!t.Subject.Equals(t.Object)) sourceDependencies.Add(new MappingPair(t.Subject, t.Object, TripleIndexType.SubjectObject));
                 }
-                else if (t.Predicate.NodeType == NodeType.Blank && t.Object.NodeType == NodeType.Blank)
+                else if (t.Predicate.NodeType == NodeType.Blank && t.Object.NodeType == NodeType.Blank && (!t.Predicate.Equals(t.Object)))
                 {
-                    if (!t.Predicate.Equals(t.Object)) sourceDependencies.Add(new MappingPair(t.Predicate, t.Object, TripleIndexType.PredicateObject));
+                  sourceDependencies.Add(new MappingPair(t.Predicate, t.Object, TripleIndexType.PredicateObject));
                 }
             }
             sourceDependencies = sourceDependencies.Distinct().ToList();

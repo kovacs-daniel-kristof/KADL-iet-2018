@@ -112,10 +112,8 @@ namespace VDS.RDF.Query.Algebra
             int origRequired = _requiredResults;
 
             // May need to detect the actual amount of required results if not specified at instantation
-            if (_requiredResults < 0)
+            if (_requiredResults < 0 && context.Query != null)
             {
-                if (context.Query != null)
-                {
                     if (context.Query.HasDistinctModifier || (context.Query.OrderBy != null && !context.Query.IsOptimisableOrderBy) || context.Query.GroupBy != null || context.Query.Having != null || context.Query.Bindings != null)
                     {
                         // If there's an DISTINCT/ORDER BY/GROUP BY/HAVING/BINDINGS present then can't do Lazy evaluation
@@ -141,8 +139,7 @@ namespace VDS.RDF.Query.Algebra
                             _requiredResults = -1;
                         }
                     }
-                    Debug.WriteLine("Lazy Evaluation - Number of required results is " + _requiredResults);
-                }
+                    Debug.WriteLine("Lazy Evaluation - Number of required results is " + _requiredResults); 
             }
 
             switch (_requiredResults)
@@ -255,12 +252,9 @@ namespace VDS.RDF.Query.Algebra
                 // In the case that we're lazily evaluating an optimisable ORDER BY then
                 // we need to apply OrderBy()'s to our enumeration
                 // This only applies to the 1st pattern
-                if (pattern == 0)
+                if (pattern == 0 && context.Query != null && context.Query.OrderBy != null && context.Query.IsOptimisableOrderBy))
                 {
-                    if (context.Query != null)
-                    {
-                        if (context.Query.OrderBy != null && context.Query.IsOptimisableOrderBy)
-                        {
+
                             IComparer<Triple> comparer = context.Query.OrderBy.GetComparer(tp);
                             if (comparer != null)
                             {
@@ -273,8 +267,7 @@ namespace VDS.RDF.Query.Algebra
                                 // lazy evaluation will significantly impact performance and lead to an apparent infinite loop
                                 return base.Evaluate(context);
                             }
-                        }
-                    }
+
                 }
 
                 foreach (Triple t in ts)

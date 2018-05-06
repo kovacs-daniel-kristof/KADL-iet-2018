@@ -463,7 +463,7 @@ namespace VDS.RDF.Configuration
                             case StardogV3:
                                 storageProvider = new StardogV3Connector(server, store);
                                 break;
-                            case Stardog:
+                    
                             default:
                                 storageProvider = new StardogConnector(server, store);
                                 break;
@@ -493,7 +493,7 @@ namespace VDS.RDF.Configuration
                             case StardogServerV3:
                                 storageServer = new StardogV3Server(server, user, pwd);
                                 break;
-                            case StardogServer:
+                        
                             default:
                                 storageServer = new StardogServer(server, user, pwd);
                                 break;
