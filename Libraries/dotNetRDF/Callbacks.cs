@@ -73,6 +73,8 @@ namespace VDS.RDF
     /// </remarks>
     public delegate void RdfHandlerCallback(IRdfHandler handler, Object state);
 
+
+    
     /// <summary>
     /// Callbacks for methods that process the results with an SPARQL Results Handler asynchronously
     /// </summary>
