@@ -57,16 +57,11 @@ namespace VDS.RDF.Web
         /// </remarks>
         private static String GetUsername(IHttpContext context)
         {
-            if (context.User != null)
+            if (context.User != null && context.User.Identity != null && context.User.Identity.IsAuthenticated)
             {
-                if (context.User.Identity != null)
-                {
-                    if (context.User.Identity.IsAuthenticated)
-                    {
+
                         return context.User.Identity.Name;
                     }
-                }
-            }
             return null;
         }
 
@@ -357,10 +352,10 @@ namespace VDS.RDF.Web
             context.Response.Clear();
             context.Response.StatusCode = statusCode;
 
-            if (config != null)
+            if (config != null && !config.ShowErrors)
             {
                 // If not showing errors then we won't return our custom error description
-                if (!config.ShowErrors) return;
+              return;
             }
 
             // Set to Plain Text output and report the error
@@ -425,10 +420,10 @@ namespace VDS.RDF.Web
             context.Response.Clear();
             context.Response.StatusCode = statusCode;
 
-            if (config != null)
+            if (config != null && !config.ShowErrors)
             {
                 // If not showing errors then we won't return our custom error description
-                if (!config.ShowErrors) return;
+               return;
             }
 
             // Set to Plain Text output and report the error
@@ -510,10 +505,10 @@ namespace VDS.RDF.Web
 
             try
             {
-                if (etag != null)
+                if (etag != null && etag.Equals(context.Request.Headers["If-None-Match"]))
                 {
                     // If ETags match then can send a 304 Not Modified
-                    if (etag.Equals(context.Request.Headers["If-None-Match"])) return true;
+                    return true;
                 }
 
                 if (lastModified != null)

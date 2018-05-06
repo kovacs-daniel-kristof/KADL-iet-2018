@@ -375,10 +375,8 @@ namespace VDS.RDF.Web.Configuration.Server
 
             // Get the SPARQL Describe Algorithm
             INode describeNode = ConfigurationLoader.GetConfigurationNode(g, objNode, g.CreateUriNode(UriFactory.Create(ConfigurationLoader.PropertyDescribeAlgorithm)));
-            if (describeNode != null)
+            if (describeNode != null && describeNode.NodeType == NodeType.Litera)
             {
-                if (describeNode.NodeType == NodeType.Literal)
-                {
                     String algoClass = ((ILiteralNode)describeNode).Value;
                     try
                     {
@@ -400,7 +398,7 @@ namespace VDS.RDF.Web.Configuration.Server
                     {
                         throw new DotNetRdfConfigurationException("Unable to set the Describe Algorithm for the HTTP Handler identified by the Node '" + objNode.ToString() + "' as the value given for the dnr:describeAlgorithm property was not a type name for a type that can be instantiated", ex);
                     }
-                }
+                
             }
 
             // Get the Query Optimiser

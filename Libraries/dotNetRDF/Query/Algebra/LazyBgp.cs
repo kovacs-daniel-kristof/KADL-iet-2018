@@ -252,7 +252,7 @@ namespace VDS.RDF.Query.Algebra
                 // In the case that we're lazily evaluating an optimisable ORDER BY then
                 // we need to apply OrderBy()'s to our enumeration
                 // This only applies to the 1st pattern
-                if (pattern == 0 && context.Query != null && context.Query.OrderBy != null && context.Query.IsOptimisableOrderBy))
+                if (pattern == 0 && context.Query != null && context.Query.OrderBy != null && context.Query.IsOptimisableOrderBy)
                 {
 
                             IComparer<Triple> comparer = context.Query.OrderBy.GetComparer(tp);

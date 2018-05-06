@@ -248,12 +248,9 @@ namespace VDS.RDF.Web
                         partialResults = this._config.DefaultPartialResults;
                     }
                 }
-                else if (context.Request.Form["partialResults"] != null)
+                else if (context.Request.Form["partialResults"] != null && !Boolean.TryParse(context.Request.Form["partialResults"], out partialResults))
                 {
-                    if (!Boolean.TryParse(context.Request.Form["partialResults"], out partialResults))
-                    {
                         partialResults = this._config.DefaultPartialResults;
-                    }
                 }
 
                 // Now we're going to parse the Query
@@ -298,14 +295,11 @@ namespace VDS.RDF.Web
                         query.AddDefaultGraph(UriFactory.Create(userDefaultGraph));
                     }
                 }
-                else if (!this._config.DefaultGraphURI.Equals(String.Empty))
+                else if (!this._config.DefaultGraphURI.Equals(String.Empty)&& !query.DefaultGraphs.Any())
                 {
                     // Only applies if the Query doesn't specify any Default Graph and there wasn't a protocol defined
                     // dataset present
-                    if (!query.DefaultGraphs.Any())
-                    {
                         query.AddDefaultGraph(UriFactory.Create(this._config.DefaultGraphURI));
-                    }
                 }
 
                 // Set the Named Graph URIs (if any)

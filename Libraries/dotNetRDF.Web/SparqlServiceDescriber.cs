@@ -165,12 +165,11 @@ namespace VDS.RDF.Web
             IUriNode resultFormat = g.CreateUriNode("sd:" + PropertyResultFormat);
             foreach (MimeTypeDefinition definition in MimeTypesHelper.Definitions)
             {
-                if (definition.CanWriteRdf || definition.CanWriteSparqlResults)
+                if ((definition.CanWriteRdf || definition.CanWriteSparqlResults) && definition.FormatUri != null)
                 {
-                    if (definition.FormatUri != null)
-                    {
+ 
                         g.Assert(descrip, resultFormat, g.CreateUriNode(UriFactory.Create(definition.FormatUri)));
-                    }
+            
                 }
             }
 
@@ -334,12 +333,9 @@ namespace VDS.RDF.Web
                 IUriNode inputFormat = g.CreateUriNode("sd:" + PropertyInputFormat);
                 foreach (MimeTypeDefinition definition in MimeTypesHelper.Definitions)
                 {
-                    if (definition.CanParseRdf)
+                    if (definition.CanParseRdf && definition.FormatUri != null)
                     {
-                        if (definition.FormatUri != null)
-                        {
-                            g.Assert(protocolNode, inputFormat, g.CreateUriNode(UriFactory.Create(definition.FormatUri)));
-                        }
+                       g.Assert(protocolNode, inputFormat, g.CreateUriNode(UriFactory.Create(definition.FormatUri)));
                     }
                 }
 
@@ -347,12 +343,11 @@ namespace VDS.RDF.Web
                 IUriNode resultFormat = g.CreateUriNode("sd:" + PropertyResultFormat);
                 foreach (MimeTypeDefinition definition in MimeTypesHelper.Definitions)
                 {
-                    if (definition.CanWriteRdf)
+                    if (definition.CanWriteRdf && definition.FormatUri != null)
                     {
-                        if (definition.FormatUri != null)
-                        {
+
                             g.Assert(protocolNode, resultFormat, g.CreateUriNode(UriFactory.Create(definition.FormatUri)));
-                        }
+                    
                     }
                 }
             }

@@ -110,9 +110,9 @@ namespace VDS.RDF.Web
         /// <param name="context">HTTP Context</param>
         protected override void UpdateConfig(HttpContext context)
         {
-            if (this._config.CacheDuration == 0)
+            if (this._config.CacheDuration == 0 && context.Cache[context.Request.Path] != null)
             {
-                if (context.Cache[context.Request.Path] != null) context.Cache.Remove(context.Request.Path);
+                context.Cache.Remove(context.Request.Path);
             }
         }
     }

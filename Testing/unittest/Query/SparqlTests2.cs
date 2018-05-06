@@ -1307,8 +1307,7 @@ WHERE
         [Fact]
         public void SparqlSubQueryGraphInteractionCore416_Serial()
         {
-            try
-            {
+            
 #if NET40
                 Options.UsePLinqEvaluation = false;
 #endif
@@ -1343,7 +1342,9 @@ WHERE
 
                 Console.WriteLine("Total Execution Time: " + total);
                 Assert.True(total < new TimeSpan(0, 0, 1 * (totalRuns / 10)));
-            }
+            
+            
+
 
         }
 

@@ -109,12 +109,10 @@ namespace VDS.RDF.Web
                 // Serve the Graph to the User
                 context.Response.ContentType = definition.CanonicalMimeType;
                 HandlerHelper.AddCachingHeaders(webContext, this._config.ETag, null);
-                if (writer is IHtmlWriter)
-                {
-                    if (!this._config.Stylesheet.Equals(String.Empty))
-                    {
+                if (writer is IHtmlWriter&& !this._config.Stylesheet.Equals(String.Empty))
+                {     
                         ((IHtmlWriter)writer).Stylesheet = this._config.Stylesheet;
-                    }
+
                 }
                 context.Response.ContentEncoding = definition.Encoding;
                 HandlerHelper.ApplyWriterOptions(writer, this._config);
