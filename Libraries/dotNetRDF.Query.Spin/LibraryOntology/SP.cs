@@ -317,9 +317,7 @@ namespace VDS.RDF.Query.Spin.LibraryOntology
         }
 
         static SP()
-        {
-            //GetModel();
-            //SP.init(BuiltinPersonalities.model);
+        {            
         }
 
 
@@ -350,7 +348,5 @@ namespace VDS.RDF.Query.Spin.LibraryOntology
                 }
             return null;
         }
-
-
     }
 }

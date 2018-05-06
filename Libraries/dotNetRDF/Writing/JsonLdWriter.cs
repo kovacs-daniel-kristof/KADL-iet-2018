@@ -116,12 +116,9 @@ namespace VDS.RDF.Writing
                 }
 
                 // 4.3 - If graph is not the default graph and default graph does not have a name member, create such a member and initialize its value to a new dictionary with a single member @id whose value is name.
-                if (name != "@default")
+                if (name != "@default" && !defaultGraph.ContainsKey(name))
                 {
-                    if (!defaultGraph.ContainsKey(name))
-                    {
-                        defaultGraph.Add(name, new JObjectWithUsages(new JProperty("@id", name)));
-                    }
+                    defaultGraph.Add(name, new JObjectWithUsages(new JProperty("@id", name)));                 
                 }
 
                 // 4.4 - Reference the value of the name member in graph map using the variable node map.
@@ -192,8 +189,7 @@ namespace VDS.RDF.Writing
                         {
                             nodeUsagesMap.Add(obj, new JArray());
                         }
-                        // 4.5.8.2
-                        // AppendUniqueElement(node["@id"], nodeUsagesMap[obj] as JArray);
+                        // 4.5.8.2                        
                         // KA - looks like a bug in the spec, if we don't add duplicate entries then this map does not correctly detect when a list node is referred to by the same subject in different statements
                         (nodeUsagesMap[obj]).Add(node["@id"]);
                         // 4.8.5.4
@@ -334,7 +330,7 @@ namespace VDS.RDF.Writing
             // Not mentioned in spec, but if node is not a blank node we should not merge it into a list array
             if (!JsonLdProcessor.IsBlankNodeIdentifier(nodeId)) return false;
 
-            var mapEntry = nodeUsagesMap[nodeId] as JArray;
+            var mapEntry = nodeUsagesMap[nodeId];
             if (mapEntry == null || mapEntry.Count != 1) return false;
 
             if (node.Usages.Count != 1) return false;

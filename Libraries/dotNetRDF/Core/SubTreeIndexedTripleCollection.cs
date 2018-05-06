@@ -134,12 +134,8 @@ namespace VDS.RDF
         /// <param name="index">Index to remove from</param>
         private void Unindex(INode n, Triple t, MultiDictionary<INode, MultiDictionary<Triple, List<Triple>>> index)
         {
-            if (index.TryGetValue(n, out MultiDictionary<Triple, List<Triple>> subtree))
-            {
-                if (subtree.TryGetValue(t, out List<Triple> ts))
-                {
-                    if (ts != null) ts.Remove(t);
-                }
+            if (index.TryGetValue(n, out MultiDictionary<Triple, List<Triple>> subtree) && subtree.TryGetValue(t, out List<Triple> ts) && ts != null) {
+                ts.Remove(t);
             }
         }
 
